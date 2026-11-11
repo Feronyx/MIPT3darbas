@@ -11,6 +11,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.mXparser;
 
@@ -45,7 +46,31 @@ public class MainActivity extends AppCompatActivity {
         this.editText.setText(result);
 
     }
+    public void onBackspaceButtonClick(View view) {
+        String currentString = this.editText.getText().toString();
 
+        String newString = StringUtils.substring(currentString, 0, currentString.length() - 1);
+        this.editText.setText(newString);
+    }
+
+    public void onCleanButtonClick(View view) {
+
+        this.editText.setText("");
+    }
+
+    public void onClickPlusMinus(View view) {
+        String currentString = this.editText.getText().toString();
+        float result = Float.parseFloat(currentString);
+        String newString = String.valueOf(result*-1);
+        this.editText.setText(newString);
+    }
+
+    public void onClickSqrt(View view) {
+        String currentString = this.editText.getText().toString();
+        float result = Float.parseFloat(currentString);
+        String newString = String.valueOf(Math.sqrt(result));
+        this.editText.setText(newString);
+    }
 
 }
 
